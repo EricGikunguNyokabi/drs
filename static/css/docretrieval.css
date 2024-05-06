@@ -1,0 +1,99 @@
+#docbody{
+    background: linear-gradient(to right,rgba(146, 228, 108,1),rgba(122, 102, 102, 0.3));
+}
+
+/* NAVIGATION HOME */
+#mynavlink{
+    background: linear-gradient(to right,rgba(0,50,0,1),rgba(0,255,0,.7));
+}
+#mynavlinK2{
+    background: linear-gradient(to right,rgba(200,0,0,.5),rgba(100,0,100,1));
+}
+
+#h3home{
+    color:rgb(6, 90, 6);
+    margin-inline-start: 0;
+    text-decoration: underline;
+}
+.card .card-header li{
+    font-size: 1.3em;
+    margin-inline-start: 20px;
+    position: relative;
+    display: flex;
+}
+.card .card-body p{
+    font-size: 1.2em;
+}
+/* footer section */
+
+#carouselbg{
+    background: linear-gradient(to right,rgba(100,100,50,1),rgba(20,50,7,.5));
+}
+#marqhome{
+    background: linear-gradient(to right,rgba(50,150,255,.5),rgba(150,50,200,.5));
+}
+#h1{
+    font-variant: small-caps;
+    font-weight: 900;
+    color: blue;
+}
+#btnlog:hover{
+    transform: scale(2.5);
+}
+#btnlog{
+    transition: 0.2s;
+}
+
+
+ /* REMOVING ARROWS  from input=number =================================================================== */
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  /* ==================================================================================================== */
+  /* PASSWORD VERIFICATION */
+  /* The message box is shown when the user clicks on the password field */
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10004;";
+  }
+  
+  /* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10006;";
+  }
+/* =================================================================================================================== */

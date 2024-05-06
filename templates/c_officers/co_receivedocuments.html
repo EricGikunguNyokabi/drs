@@ -1,0 +1,107 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+<style>
+    .form-container {
+        margin-top: 50px;
+    }
+    .bg-primary {
+        padding: 20px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mb-5">
+    <div class="row justify-content-center form-container">
+        <div class="col-md-6">
+            <div class="card mt-1 mb-5">
+                <div class="card-header text-center" style="font-size: 1.4em; font-weight: 700;">
+                    DETAILS OF THE COLLECTED DOCUMENT
+                </div>
+                <div class="card-body">
+                    <!-- Form for Document Holder -->
+                    <form action="/receive_documents" method="POST">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="first_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="secondName" class="form-label">Second Name</label>
+                            <input type="text" class="form-control" id="secondName" name="second_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="last_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentNumber" class="form-label">Document ID</label>
+                            <input type="text" class="form-control" id="documentNumber" name="document_id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentType" class="form-label">Document Type</label>
+                            <select class="form-select" id="documentType" name="document_type"  required>
+                                <option value="">Select Document Type</option>
+                                {% for document_type in document_types %}
+                                    <option value="{{ document_type[0] }}">{{ document_type[0] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <label for="dateReceived" class="form-label">Date Received</label>
+                            <input type="text" class="form-control" id="dateReceived" name="received_timestamp" readonly required>
+                        </div>
+
+                        <div class="bg-danger p-3">
+                            <h5 class="text-white">Collection Officer Current Location Details</h5>
+                            <div class="mb-3">
+                                <label for="new_county" class="form-label">Current County</label>
+                                <select class="form-select" id="new_county" name="county" required onchange="updateConstituencies()" style="padding: 10px;" readonly>
+                                    <option value="{{ county }}" selected>{{ county }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new_collection_constituency" class="form-label">Current Constituency</label>
+                                <select class="form-select" id="new_collection_constituency" name="constituency" required style="padding: 10px;">
+                                    <!-- Constituencies will be populated dynamically using JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                                               
+                        <!-- Second Part for Good Samaritan -->
+                        <div class="bg-warning p-3 mt-2 text-dark">
+                            <h5 class="">Good Samaritan Information</h5>
+                            <div class="mb-3 text-dark">
+                                <label for="goodSamaritanName" class="form-label text-white">Good Samaritan Name</label>
+                                <input type="text" class="form-control" id="goodSamaritanName" name="good_samaritan_name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mpesaNumber" class="form-label text-white">M-Pesa Number</label>
+                                <input type="number" class="form-control" id="mpesaNumber" name="mobile_no">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3 form-control">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var currentDate = new Date();
+        var offset = currentDate.getTimezoneOffset() * 60000; // Offset in milliseconds
+        var correctedDate = new Date(currentDate.getTime() - offset);
+        var formattedDate = correctedDate.toISOString().slice(0, 19).replace('T', ' ');
+        document.getElementById('dateReceived').value = formattedDate;
+    });
+</script>
+
+{% endif %}
+
+
+{% include 'components/footer.html' %}

@@ -1,0 +1,61 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+
+<style>
+    .card-header{
+        font-size: 2em; 
+        font-variant: small-caps;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">Search Document Details</div>
+                <div class="card-body">
+                    <form action="/search_lost" method="POST">
+                        <label class="form-label ms-3" for="document_id">Document Number</label>
+                        <input class="form-control" type="text" name="document_id" placeholder="Document Unique ID">
+                        <button type="submit" class="btn btn-primary mt-3">Search</button>
+                    </form>
+
+
+                    {% if user_data %}
+                    <div class="table-responsive mt-4">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>ID Number</th>
+                                    <!-- Add other user details here -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ user_data[0] }}</td>
+                                    <td>{{ user_data[1] }}</td>
+                                    <td>{{ user_data[2] }}</td>
+                                    <!-- Add other user details here -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    {{ message }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3"></div>
+    </div>
+</div>
+
+{% endif %}
+
+{% include 'components/footer.html' %}

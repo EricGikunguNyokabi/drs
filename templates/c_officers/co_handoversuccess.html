@@ -1,0 +1,77 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+
+
+<style>
+    #h1{
+        font-variant: small-caps;
+        font-weight: 900;
+        color: blue;
+    }
+    #btnlog:hover{
+        transform: scale(2.5);
+    }
+    #btnlog{
+        transition: 0.2s;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div class="container mt-2 text-center">
+    <div class="row justify-content-center">
+        
+        <div class="col-sm-12 col-md-8">
+            <h1 class="display-5" id="h1"> {{ message }} </h1>
+            <div class="mt-3">
+                <div class="card mb-1">
+                    <div class="card-body">
+            
+                        <h1>Document Details</h1>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr><th scope="row">First Name</th><td>{{ first_name }}</td></tr>
+                                    <tr><th scope="row">Second Name</th><td>{{ second_name }}</td></tr>
+                                    <tr><th scope="row">Last Name</th><td>{{ last_name }}</td></tr>
+                                    <tr><th scope="row">Document ID</th><td>{{ document_id }}</td></tr>
+                                    <tr><th scope="row">Document Type</th><td>{{ document_type }}</td></tr>
+                                    <tr><th scope="row">Date Received</th><td>{{ date_received }}</td></tr>
+                                    <tr><th scope="row" class="bg-warning">Doc Collected By</th><td class="bg-warning">{{ good_samaritan_name }}</td></tr>
+                                    <tr><th scope="row" class="bg-warning">Mobile Number</th><td class="bg-warning">{{ mobile_no }}</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p class="">
+                    <a href="/c_o_dashboard" class="btn btn-danger btn-large" id="btnlog">Back to Dashboard</a>
+                </p>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="card-text">
+                            {% if phone_number %}
+                                Text Message &quot; {{ message_suc }} &quot; Have been sent to Mobile Number
+                                <p style="text-decoration: underline; color: blue;">{{ phone_number }}</p>
+                            {% else %}
+                            Mobile Number Not Found
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+{% include 'components/footer.html' %}

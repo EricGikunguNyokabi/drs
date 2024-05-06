@@ -1,0 +1,218 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/admin_navbar.html' %}
+<style>
+    .table-wrapper {
+    overflow-y: auto; /* Enable vertical scrollbar if content exceeds the max height */
+}
+</style>
+
+
+
+<div class="container">
+    <h1 class="text-center mt-3" style="font-variant: small-caps; font-weight: 800;">User Management</h1>
+    <div class="row justify-content-center">
+        {% if message %}
+            <div class="alert bg-success" role="alert">
+                <h1 class="text-center text-warning bg-success" style="font-weight: 700;">{{ message }}</h1>
+            </div>
+        {% endif %}
+        <!-- Add User Button -->
+       <div class="col-md-6">
+         <button type="button" class="ms-5 btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#addUserModal">
+            Add User
+        </button>
+       </div>
+        <!-- Delete User Button -->
+       <div class="col-md-6">
+        <button type="button" class="ms-5 btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+           Delete User
+       </button>
+       </div>
+    </div>
+
+<!-- Modal for Add User -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <!-- Add User Form Content Here -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-info">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add User Form -->
+                <form id="addUserForm" action="/add_user" method="POST">
+                    <div class="form-group">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">First Name</span>
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">Last Name</span>
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">ID Number</span>
+                            <input type="number" class="form-control" id="id_number" name="id_number" placeholder="ID Number" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">Mobile Number</span>
+                            <input type="tel" class="form-control" id="mobile_no" name="mobile_no" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">Email Address</span>
+                            <input type="email" class="form-control" id="email" name="email_address" placeholder="Email Address" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;" hidden>User Role</span>
+                            <input type="hidden" name="user_role" value="user">
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">Password</span>
+                            <input type="text" class="form-control" id="password" name="password" value="@Password123" readonly>
+                        </div>
+
+                    </div>
+                    <!-- Add other form fields for user details -->
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Form content ends here -->
+</div>
+<!-- ========================================================================================= -->
+<!-- DELETE USER -->
+<!-- Modal for delete User -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <!-- delete User Form Content Here -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-danger">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- delete User Form -->
+                <form id="deleteUserForm" action="/delete_user" method="POST">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="min-width: 155px;">ID Number</span>
+                            <input type="number" class="form-control" id="id_number" name="id_number" placeholder="ID Number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning mt-2">Click to delete user</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- DELETEForm content ends here -->
+</div>
+
+
+<!-- ======================================================================================================================== -->
+
+<style>
+    .table-wrapper {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="container mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- Search Form -->
+                <form action="/search_user" method="POST" class="p-4">
+                    <label class="form-label ms-3" for="document_id">Search User by ID Number</label>
+                    <input class="form-control" type="number" name="id_number" placeholder="User ID Number">
+                    <button type="submit" class="btn btn-primary mt-3">Search</button>
+                </form>
+
+                <!-- Table for Document Tracking -->
+                <div class="card-header">All Registered Users</div>
+                <div class="card-body table-wrapper">
+                    <table class="table table-striped p-1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Second Name</th>
+                                <th scope="col">ID Number</th>
+                                <th scope="col">Mobile No</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">User Role</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in user_details %}
+                            <tr>
+                                <td> {{ loop.index }} </td>
+                                <td>{{ user[1] }}</td>
+                                <td>{{ user[2] }}</td>
+                                <td>{{ user[3] }}</td>
+                                <td>{{ user[4] }}</td>
+                                <td>{{ user[5] }}</td>
+                                <td>{{ user[6] }}</td>
+
+                                <!-- Edit Button for each entry -->
+                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ user[0] }}">Edit</button></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if message %}
+            <!-- Alert message -->
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal for each entry -->
+{% for user in joined_data %}
+<div class="modal fade" id="editModal{{ user.user_id_number }}" tabindex="-1" aria-labelledby="editModal{{ user.user_id_number }}Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModal{{ user.user_id_number }}Label">Edit User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Edit Form for each entry -->
+                <form action="/edit_user" method="POST">
+                    <!-- Editable fields here -->
+                    <!-- Example: -->
+                    <div class="mb-3">
+                        <label for="editFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="editFirstName" name="editFirstName" value="{{ user.user_first_name }}">
+                    </div>
+                    <!-- Add other editable fields as needed -->
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+{% include 'components/footer.html' %}

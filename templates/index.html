@@ -1,0 +1,38 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/user_navbar.html' %}
+
+<div class="container mt-4">
+    <!-- Breadcrumb start -->
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8">
+            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3">
+                <ol class="breadcrumb ms-auto mb-0 justify-content-center">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item ms-3"><a href="/about">About</a></li>
+                    <li class="breadcrumb-item ms-3"><a href="/login">Login</a></li>
+                    <li class="breadcrumb-item ms-3"><a href="/register">Register</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+</div>
+
+    <!-- Row to display images in carousel -->
+{% include 'components/carouselhome.html' %}
+
+
+{% include 'components/drsmain.html' %}
+
+<div class="container text-center mb-5">
+
+    <!-- Links to other pages -->
+    <div class="mt-3">
+        <a href="/admin_login" class="btn btn-danger" target="_blank">Admin</a>
+        <a href="/c_o_login" class="btn btn-danger" target="_blank">co_login</a>
+        <a href="/c_o_registration" class="btn btn-danger" target="_blank">co_register</a>
+    </div>
+</div>
+
+{% include 'components/footer.html' %}

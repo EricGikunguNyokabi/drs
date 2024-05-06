@@ -1,0 +1,101 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/admin_navbar.html' %}
+
+
+<div class="container mt-3 mb-5">
+    <h3 class="text-center text-danger mb-3 display-6" style="font-variant: small-caps; font-weight: 800; text-decoration-line: underline;">Admin Dashboard</h3>
+
+    <div class="row">
+        <!-- Database Statistics Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Database Statistics</h2>
+                    <p class="card-text">View statistics of drs database.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/db_statistics" class="btn btn-secondary">View Statistics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">User Management</h2>
+                    <p class="card-text">Manage registered users and their privileges.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/user_management" class="btn btn-primary">Manage Users</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-0">
+        <!-- Document Types Db Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Document Types</h2>
+                    <p class="card-text">Manage document types data.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/admin/manage_document_types" class="btn btn-warning">Add Document</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- System Settings Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Claim Reports/messages</h2>
+                    <p class="card-text">Claims/ complaints reports and messages.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/admin/officer_claim_reports" class="btn btn-info">Officer Mails</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-0">
+        <!-- Document Types Db Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Web Image Upload</h2>
+                    <p class="card-text">Upload general images to use for this web application</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/drs_general_image_uploads" class="btn btn-success">Upload Image</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- System Settings Section -->
+        <div class="col-sm-12 col-md-6 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Lost and Found</h2>
+                    <p class="card-text">General Lost and Found Documents Collected</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/lost_and_found" class="btn btn-danger ms-auto">Lost and Found</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% include 'components/footer.html' %}

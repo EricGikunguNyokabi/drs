@@ -1,0 +1,127 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+
+<div class="container mt-4 mb-5">
+    <!-- Breadcrumb start -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About Document Retrieval System</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- About Card -->
+    <div class="card mb-4 ">
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h2 class="card-title mb-4 text-center">DOCUMENT - RETRIEVAL - SYSTEM EXPLAINED</h2>
+                    <p class="lead">
+                        The Document Retrieval System (DRS) is a revolutionary platform designed to facilitate the retrieval and return of lost documents to their rightful owners. It provides a seamless process for individuals who find lost documents to return them to collection centers, ensuring swift reunification with their owners.
+                    </p>
+                    <p>
+                        DRS simplifies the process by leveraging technology and collaboration with collection centers across the country. Its purpose is to streamline document management, reduce the burden of replacing lost documents, and enhance public service delivery.
+                    </p>
+                    <!-- Table showing different types of documents -->
+                    <h4 class="mt-4 text-center">Types of Documents Handled by DRS</h4>
+                    <table class="table mx-auto">
+                        <thead>
+                            <tr>
+                                <th>Document Type</th><th>Description</th><th style="text-align: center;">Proposed Charges</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KCSE Certificate</td><td>Kenya Certificate of Secondary Education</td>
+                                <td rowspan="7" class="center-button" style="vertical-align: middle; text-align: center;"><a href="/login" class="btn btn-info">View Charges</a></td>
+                            </tr>
+                            <tr>
+                                <td>KCPE Certificate</td><td>Kenya Certificate of Primary Education</td>
+                            </tr>
+                            <tr>
+                                <td>Birth Certificate</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>National ID</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>Alien ID</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>School ID</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>Passport</td><td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer"><i>We are not limited to the above documents only. This is just but a few. Register with DRS Today free of charge and start a journey of retrieving back your/keen's documents flawlessly.</i></div>
+        </div>
+    </div>
+
+    <!-- Steps Taken Card -->
+    <div class="card bg-light mb-4">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Steps Taken</h2>
+            <dl class="row">
+                <div class="col-md-4">
+                    <dt>Found Lost Document(s)</dt>
+                    <dd>The process begins when someone comes across a lost document and takes it to the nearest collection center.</dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>Document Handover at Collection Center</dt>
+                    <dd>The collection officer receives the document and enters its details into the system.</dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>Compensation Process Initiated</dt>
+                    <dd>Details of the document and the individual are recorded for compensation processing.</dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>Notification to Document Owner</dt>
+                    <dd>An SMS notification is sent to the owner informing them about the document's location.</dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>Cost and Collection Information Provided</dt>
+                    <dd>The SMS includes information about fees and collection center details.</dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>Publicity and Registration</dt>
+                    <dd>Efforts are made to encourage registration and participation in the Document Retrieval System.</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Founder Card -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Idea : </h2>
+            <p class="text-center">
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Card -->
+    <div class="card bg-light mb-4">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-4">Register with DRS</h2>
+            <p>
+                Ready to experience the benefits of the Document Retrieval System? Register now to access a secure and efficient lost document retrieval platform.
+            </p>
+            <a href="/register" class="btn btn-primary">Register Now</a>
+        </div>
+    </div>
+
+   
+</div>
+
+{% include 'components/footer.html' %}

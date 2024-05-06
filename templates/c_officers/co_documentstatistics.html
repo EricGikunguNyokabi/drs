@@ -1,0 +1,41 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Request Permissions</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/request_permissions" method="POST">
+                        <div class="mb-3">
+                            <label for="reason" class="form-label">Reason for Request</label>
+                            <textarea class="form-control" id="reason" name="reason" required></textarea>
+                        </div>
+                        <div class="container mt-3">
+                            <h3>
+                             {% with messages = get_flashed_messages(with_categories=true) %}
+                             {% for category, message in messages %}
+                                 <div class="alert alert-{{ category }}">
+                                     {{ message }}
+                                 </div>
+                             {% endfor %}
+                         {% endwith %}
+                            </h3>
+                         </div>
+                         
+                        <button type="submit" class="btn btn-primary">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% include 'components/footer.html' %}

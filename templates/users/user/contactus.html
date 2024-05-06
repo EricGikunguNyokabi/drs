@@ -1,0 +1,85 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/user_navbar.html' %}
+
+<style>
+    .col-sm-8 a{
+        font-size: 1.5em;
+    }
+</style>
+
+<div class="container py-2 mb-2">
+    <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/user_profile">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+            </ol>
+          </nav>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8">
+            <div class="card rounded-5">
+                <div class="card-body">
+                    <h2>Contact Us</h2>
+                    <p>For any inquiries or assistance, please feel free to contact us using the information below:</p>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <h4>Email</h4>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            <a href="mailto:nyokabigikungueric@gmail.com">nyokabigikungueric@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <h4>Phone Number</h4>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            <a href="tel:+254701838170">+254701838170</a>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <h4>Location Address</h4>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            Kihoya,Kangema, Murang'a, Kenya.
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <form action="">
+                <div class="card mt-5 rounded-5">
+                    <div class="card-body mb-2">
+                        <label for="" class="form-label">Write to us on the textbox below:</label>
+                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Write a message to us here ..." required></textarea>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mt-2 ms-5">Submit</button>
+                    </div>
+                   
+                </div>
+                
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if session %}
+{% include 'components/footer.html' %}
+{% endif %}

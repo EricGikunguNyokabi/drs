@@ -1,0 +1,80 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+
+<!-- Enter OTP form starts here -->
+<section class="container mt-5">
+  <div class="row justify-content-center mb-5">
+      <!-- middle row containing form -->
+    <div class="col-sm-12 col-md-6">
+  <!-- Breadcrumb start -->
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/login">Login</a></li>
+          <li class="breadcrumb-item"><a href="/forgot_password">Forgot Password?</a></li>
+          <li class="breadcrumb-item active" aria-current="page">OTP Verification</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- Breadcrumb end -->
+      <div class="card">
+        <div class="card-title ms-3 mt-2 text-danger">
+          <p>Follow these steps so as to receive OTP:</p>
+          <div class="card-text ms-3">
+              <ul>
+                  <li>Dial *456*9*5# from the number you have registered with to whitelist it.</li>
+                  <li>Select option 5: Activate ALL Promotional Messages</li>
+                  <li>You will receive the following message &quot;You have successfully activated ALL Promotional messages &quot;</li>
+              </ul>
+          </div>
+      </div>
+        <div class="card-header text-center">
+            <form action="/get_otp" method="GET">
+              <div class="mt-2 mb-3">
+                <button class="btn btn-success">Request OTP</button>
+              </div>
+            </form>
+
+
+          <legend><b>ENTER OTP RECEIVED</b></legend>
+        </div>
+
+      <form action="/verify_otp" method="POST">
+        
+        <fieldset>
+          {% if message %}
+                <div class="alert alert-danger pz-2 mt-2 text-center" role="alert">
+                  {{ message }}
+                </div>  
+          {% endif %}
+          <!-- OTP input field -->
+          <div class="col-auto mt-3 mb-3 ms-3 me-3">
+            <label class="visually-hidden" for="otpInput">Enter OTP</label>
+            <div class="input-group">
+              <div class="input-group-text">OTP : </div>
+              <input type="text" class="form-control" name="otp" placeholder="Enter OTP" autocomplete="off" required>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="mt-3 mb-3" style="display: flex; justify-content: center;">
+            <input type="submit" class="btn btn-primary btn-lg" value="Verify OTP Received">
+          </div>
+        </fieldset>
+        
+      </form>
+    </div>
+    <!-- Form content ends here -->
+    </div>
+
+    
+  </div>
+</section>
+
+
+<!-- Enter OTP form ends here -->
+
+{% include 'components/footer.html' %}

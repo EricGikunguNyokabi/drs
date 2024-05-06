@@ -1,0 +1,48 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/admin_navbar.html' %}
+
+
+<div class="container">
+    <h1 class="text-center mt-3" style="font-variant: small-caps; font-weight: 800;">Document Management</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Add Document Type</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/manage_document_types" method="POST">
+                        <div class="mb-3">
+                            <label for="document_name" class="form-label">Document Name</label>
+                            <input type="text" class="form-control" id="document_name" name="document_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="default_charges" class="form-label">Default Charges in KSh</label>
+                            <input type="number" class="form-control" id="default_charges" name="default_charges" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="replacement_charges" class="form-label">Actual Replacement Charges</label>
+                            <input type="number" class="form-control" id="replacement_charges" name="replacement_charges" required>
+                        </div>
+                        <div class="mb-3">
+                            <h3 class="text-success"> 
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% endwith %}
+                            </h3>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'components/footer.html' %}
+

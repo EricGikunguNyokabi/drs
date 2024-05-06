@@ -1,0 +1,64 @@
+{% include'components/header.html' %}
+{% include'components/navbar.html' %}
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+    </style>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+    <!-- Breadcrumb start -->
+    <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/c_o_login">C_Officer Login</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Collection Officer Login</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!-- Breadcrumb end -->
+<link rel="stylesheet" href="">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">COLLECTION OFFICER LOGIN</h5>
+                    </div>
+                    <div class="card-body">
+                        
+                        {% if message %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        <form action="/c_o_login" method="POST">
+                            <div class="mb-3">
+                                <label for="id_number" class="form-label ms-2">ID Number</label>
+                                <input type="number" class="form-control" name="id_number" autocomplete="off" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label ms-2">Password</label>
+                                <input type="password" class="form-control" name="password" id="myPassword" autocomplete="off" required>
+                                <input class="mt-3 ms-2" type="checkbox" onclick="myFunction()"> Show Password
+                            </div>
+                            <div class="text-center mb-3">
+                                <input type="submit" name="" class="btn btn-primary form-control" value="LogIn">
+                            </div>
+                            <div class="mb-3">
+                                <div class="card-text">Not yet registered?
+                                    <a href="/c_o_registration" class="btn btn-outline-success ms-2">Click to Register</a>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include'components/footer.html' %}

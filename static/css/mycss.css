@@ -1,0 +1,20 @@
+section{
+    background-color: rgb(202, 200, 200);
+}
+#projectname{
+    font-size:2em;
+}
+#projectnavli{
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+}
+#projectnavli .nav-link{
+    font-size: 1.5em;
+}
+#projectnavbar{
+    background-color: rgb(226, 208, 183);
+}
+legend{
+    font-size: 3em;
+}

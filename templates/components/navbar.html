@@ -1,0 +1,61 @@
+
+    <!-- NAVIGATION START HOME PAGE -->
+    <section class="container-fluid mt-2 " id="mynavlink">
+        <!-- <div class="row justify-content-end" > -->
+            <!-- <div class="col-md-auto"> -->
+<!-- refined -->
+            <nav class="navbar navbar-expand-md" id="mynavlink">
+
+                <button class="navbar-toggler bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" #navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon bg-light border border-warning"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="../../static/images/home_icon.png" alt="Home" width="60" height="30">
+                </a>
+                    <div class="collapse navbar-collapse row justify-content-end" id="navbarSupportedContent">
+                        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                           
+                            <ul class="navbar-nav ms-auto">
+                                {% if session["first_name"] %}
+                                <li class="nav-item ms-2 text-uppercase text-center">
+                                    <h3>{{ session["first_name"] }}</h3>
+                                </li>
+                                <li class="nav-item ms-5">
+                                    <a href="/logout" class="nav-link btn btn-info bg-warning text-dark rounded">LOGOUT</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item ms-2">
+                                    <a href="/login" class="nav-link btn btn-info bg-warning text-dark rounded">Login</a>
+                                </li>
+                                <li class="nav-item ms-2">
+                                    <a href="/register" class="nav-link btn btn-warning bg-warning text-dark rounded">Register</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        
+                    </div>
+            </nav>
+<!-- refined -->
+
+            <!-- </div> -->
+        <!-- </div> -->
+        
+        <div class="row" id="mynavlinK2">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+            </div>
+
+            
+            <div class="row ">
+                <div class="col-sm-12 col-md-1 col-lg-1 text-center">
+                    <a href="/">
+                        <img src="../../static/images/DRS-Logo.png" alt="DRS-Logo" class="img-fluid rounded-circle py-1" style="max-width: 100px;">
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-11 col-lg-11 text-center py-1">
+                    <h1 class="text-light ms-auto">DOCUMENT-RETRIEVAL-SYSTEM</h1>
+                </div>
+            </div>
+
+        </div>
+    </section>

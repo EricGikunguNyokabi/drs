@@ -1,0 +1,62 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+<style>
+    .card-header {
+        font-size: 2em;
+        font-variant: small-caps;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">Recovered Document Details</div>
+                <div class="card-body">
+                    <!--  -->
+                    <table class="table table-dark text-center">
+                        {% if user_data %}
+                        <thead>
+                          <th scope="col">Details</th><th scope="row">Claimant</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td scope="col">Full Names</td> <td> {{ user_data[1] }} {{ user_data[2] }} {{ user_data[3] }} </td>
+                          </tr>
+                          <tr><td scope="col">Document Number</td> <td> {{ user_data[4] }} </td></tr>
+                          <tr><td scope="col">Document Type</td> <td> {{ user_data[5] }} </td></tr>
+                          <tr><td scope="col">Date Received</td>  <td> {{ user_data[6] }} </td></tr>
+                          <tr>
+                            <td scope="col bg-success">Enter Mpesa Number</td> 
+                                <td><form action="/mpesa" method="POST"><input type="tel" class="py-0" name="mobile_no" placeholder="254xxxxxxxxx" required></td>
+                          </tr>
+                          <tr>
+                            {% if charges %}
+                              <td scope="col">Charges</td>
+                              <td class="bg-warning"><input type="number" name="price" value="{{ charges }}" hidden>
+                              <h5 class="text-danger" >KSh. {{ "{:,.2f}".format(charges) }} </h5></td>
+                            {% endif %}
+                          </tr>
+                          {% else %}
+                          <tr><td colspan="3" class="bg-warning text-dark display-5" style="font-weight: 700;">ID Number not found.</td></tr>
+                        </tbody>
+                        <tr></tr>
+                        {% endif %}
+                      </table>
+                </div>
+
+                <div class="card-footer mb-3">
+                  <input type="submit" class="btn btn-success mt-3 form-control" value="Click here to initiate handover process">
+                </div>
+              </form>
+            </div>
+            <!-- card end -->
+        </div>
+        <!-- col end -->
+        <div class="col-sm-12 col-md-3"></div>
+    </div>
+</div>
+{% include 'components/footer.html' %}

@@ -1,0 +1,75 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/user_navbar.html' %}
+
+{% if session %}
+
+<div class="container py-2 mb-2">
+    <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/user_profile">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Document Charges</li>
+            </ol>
+          </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto"> <!-- Added mx-auto to center the column horizontally -->
+            <div class="card mb-4 mt-5 mb-md-0 bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Check Document Charges here</h5>
+                    <form action="/charges" method="post">
+                        <div class="mb-3">
+                            <label for="documentType" class="form-label">Document Type</label>
+                            <select class="form-select" id="documentType" name="document_type" required>
+                                <option value="">Select Document Type</option>
+                                {% for document_type in document_types %}
+                                    <option value="{{ document_type[0] }}">{{ document_type[0] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-light">Check Charges</button>
+                    </form>
+                </div>
+            </div>
+
+            {% if charges_data %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Charges Information</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Document Name/Type</th>
+                                    <th>DRS Charges</th>
+                                    <th>Replacement Charges</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ charges_data[0] }}</td>
+                                    <td>Ksh. {{ "{:,.2f}".format(charges_data[1]) }}</td>
+                                    <td>Ksh. {{ "{:,.2f}".format(charges_data[2]) }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+
+{% include 'components/footer.html' %}

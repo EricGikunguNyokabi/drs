@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    <link rel="stylesheet" href="../../static/css/css/bootstrap.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Custom CSS for animations -->
+    <style>
+        .fade-slide {
+            opacity: .1;
+            transform: translateY(-10%);
+            transition: opacity 2s ease-out, transform 10s ease-out;
+        }
+
+        .fade-slide.fade {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+          <!-- Breadcrumb start -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User's Terms and Conditions</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+
+        <h1 class="text-center mb-">Terms and Conditions</h1>
+      
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Data Privacy and Protection</h3>
+                        <p class="fade-slide">We are committed to protecting your personal information and adhere to the provisions of the Kenyan Data Protection Act. Your data will be handled securely and in accordance with applicable laws.</p>
+                    </div>
+                </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>User Consent</h3>
+            <p class="fade-slide">By registering with our document retrieval system, you consent to the collection, processing, and storage of your personal information as outlined in these terms and conditions.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Purpose of Data Collection</h3>
+            <p class="fade-slide">We collect your personal information for the sole purpose of providing document retrieval services. Your data will not be used for any other purposes without your explicit consent.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Information Collected</h3>
+            <p class="fade-slide">The information we collect may include but is not limited to your name, contact details, identification documents, and any other information necessary for document retrieval purposes.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Data Security</h3>
+            <p class="fade-slide">We implement strict security measures to safeguard your personal information against unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Data Retention</h3>
+            <p class="fade-slide">We will retain your personal information only for as long as necessary to fulfill the purposes outlined in these terms and conditions or as required by law. Afterward, your data will be securely disposed of in accordance with our data retention policy.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>User Responsibilities</h3>
+            <p class="fade-slide">You are responsible for maintaining the confidentiality of your account credentials and ensuring that your account information is accurate and up to date. You agree to notify us immediately of any unauthorized access to or use of your account.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Third-Party Services</h3>
+            <p class="fade-slide">Our document retrieval system may integrate with third-party services for enhanced functionality. Please review the privacy policies of these third-party services as we are not responsible for their practices.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Updates to Terms and Conditions</h3>
+            <p class="fade-slide">We reserve the right to update or modify these terms and conditions at any time without prior notice. Any changes will be effective immediately upon posting on our platform. Your continued use of our services constitutes acceptance of the updated terms.</p>
+          </div>
+        </div>
+  
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Contact Information</h3>
+            <p class="fade-slide">If you have any questions or concerns about these terms and conditions or our data handling practices, please contact us at <a href="tel:+254707498399">0707 - 498 - 399</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    function fadeInParagraphs() {
+        const paragraphs = document.querySelectorAll('.card-body p');
+        paragraphs.forEach(paragraph => {
+            if (isElementInViewport(paragraph)) {
+                paragraph.classList.add('fade');
+            }
+        });
+    }
+
+    function isElementInViewport(element) {
+        const bounding = element.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    window.addEventListener('DOMContentLoaded', fadeInParagraphs);
+    window.addEventListener('scroll', fadeInParagraphs);
+</script>
+<script src="../../static/js/js/bootstrap.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+</html>
+  

@@ -1,0 +1,105 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+
+<div class="container mt-2 mb-5">
+    <h1 class="text-center mb-2" id="h1" style="font-size: 2.9em;">Collection Officer Dashboard</h1>
+
+    <div class="row">
+        <!-- Document Statistics Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Receive Document(s)</h2>
+                    <p class="card-text">Record details of the recovered document.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/receive_documents" class="btn btn-primary">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Handover Requests Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Handover to Owner</h2>
+                    <p class="card-text">Initiate handover requests of documents to the rightful owner.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/handover_requests" class="btn btn-success">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end row  -->
+<!-- start row -->
+    <div class="row">
+        <!-- Registered Users Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Transfer Document</h2>
+                    <p class="card-text">Transfer Document to another Collection Center.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/center_redirect" class="btn btn-warning">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Lost and Found Documents Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Document Records</h2>
+                    <p class="card-text">View records of reported lost documents.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/document_statistics" class="btn btn-secondary">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+    <!-- start row -->
+    <div class="row">
+        <!-- Registered Users Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Track Document</h2>
+                    <p class="card-text">Track current document location.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/track_progress" class="btn btn-info">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Lost and Found Documents Section -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Report Claims</h2>
+                    <p class="card-text">Report to Admin if difficulties or issues about any operation arise.</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="/report_claims" class="btn btn-danger">Click here</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+{% endif %}
+
+{% include 'components/footer.html' %}

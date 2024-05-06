@@ -1,0 +1,45 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Report Claims</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/report_claims" method="POST">
+                        <div class="mb-3">
+                            <label for="claimant_name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="claimant_name" placeholder="Enter Full Names" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact_info" class="form-label">Contact Details</label>
+                            <input type="text" class="form-control" id="contact_info" name="contact_info" placeholder="Enter Mobile Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                        </div>
+                        <div class="container mt-3">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'components/footer.html' %}

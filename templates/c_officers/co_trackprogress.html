@@ -1,0 +1,58 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <form action="/track_progress" method="POST" class="p-4">
+                    <label class="form-label ms-3" for="document_id">Document Number</label>
+                    <input class="form-control" type="text" name="document_id" placeholder="Document Unique ID">
+                    <button type="submit" class="btn btn-primary mt-3">Search</button>
+                </form>
+
+                <div class="card-header">Track Document Location</div>
+                <div class="card-body" style="overflow-x: auto;">
+                    <table class="table table-striped p-1">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="3">Full Name</th>
+                                <th scope="col">Document ID</th>
+                                <th scope="col">Document Type</th>
+                                <th scope="col">Date Received</th>
+                                <th scope="col">Current County</th>
+                                <th scope="col">Current Constituency</th>
+                                <th scope="col">Document Collected By</th>
+                                <th scope="col">Collector contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for document in documents %}
+                            <tr>
+                                <td>{{ document[1] }} </td>  
+                                <td>{{ document[2] }}</td> 
+                                <td>{{ document[3] }}</td> 
+                                <td>{{ document[4] }}</td>  
+                                <td>{{ document[5] }}</td>  
+                                <td>{{ document[6] }}</td> 
+                                <td>{{ document[7] }}</td>
+                                <td>{{ document[8] }}</td> 
+                                <td>{{ document[9] }}</td> 
+                                <td>{{ document[10] }}</td>  
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if message %}
+          
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% include 'components/footer.html' %}

@@ -1,0 +1,48 @@
+{% if session %}
+<style>
+    #navbarNav li{
+        margin-left: 50px;
+        font-size: 1em;
+        padding-top: 2px;
+    }
+</style>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <div class="container-fluid">
+      <!-- Navbar Brand -->
+      <a class="navbar-brand" href="/c_o_dashboard" style="font-variant: small-caps; font-size: 1.5em">Back to Dashboard</a>
+  
+      <!-- Navbar Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/receive_documents">Receive Document(s)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/handover_requests">Handover to Owner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/center_redirect">Transfer document</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/document_statistics">Document Stats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/track_progress">Track Document</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/report_claims">Report Claims</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% endif %}
+  

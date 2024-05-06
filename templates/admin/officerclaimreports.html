@@ -1,0 +1,47 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/admin_navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-3" style="font-variant: small-caps; font-weight: 800;"> Messages from Collection Officer's </h1>
+    <div class="row">
+        {% for officer_claim in officer_claims %}
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card mb-3">
+                <div class="card-body table-wrapper">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Claimant Name</th>
+                                <th>Contact Details</th>
+                                <th>Description</th>
+                                <th>Action</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ officer_claim[1] }}</td>
+                                <td>{{ officer_claim[2] }}</td>
+                                <td>{{ officer_claim[3] }}</td>
+                                <td>
+                                    <!-- Button to mark the message as read -->
+                                    <form action="/admin/officer_claim_reports" method="POST">
+                                        <input type="hidden" name="user_id" value="{{ officer_claim[0] }}">
+                                        <button type="submit" class="btn btn-primary" style="min-width: 130px;">Mark as Read</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% include 'components/footer.html' %}

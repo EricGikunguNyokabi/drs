@@ -1,0 +1,78 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/user_navbar.html' %}
+
+{% if session %}
+<div class="container py-2">
+    <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/user_profile">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Report Lost Document</li>
+            </ol>
+          </nav>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-8 mx-auto"> <!-- Added mx-auto to center the column horizontally -->
+            <div class="card mb-md-0">
+                <div class="card-header">
+                    <h3 class="card-title">Report your lost documents</h3>
+                </div>
+                <div class="card-body">
+                    
+                    <form action="/report_lost_document" method="post">
+                        {% if message %}
+                        <div class="alert alert-success pz-2 mt-2" role="alert">
+                        {{ message }}
+                        </div> 
+                        {% endif %}
+                        <div class="mb-3">
+                            <label class="form-label">Document Full Names</label>
+                            <input class="form-control" type="text" name="doc_fullname" placeholder="Enter Full Names As They Appear On Your Lost Document" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentType" class="form-label">Select Document Type</label>
+                            <select class="form-select" id="documentType" name="document_type" required>
+                                <option value="">Select Document Type</option>
+                                {% for document_type in document_types %}
+                                    <option value="{{ document_type[0] }}">{{ document_type[0] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Document Unique Number</label>
+                            <input class="form-control" type="text" name="document_id" placeholder="Enter Document Unique Number">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Document Status</label>
+                            <input class="form-control bg-info" type="text" value="Lost Document" readonly>
+                            <!-- Hidden input to hold the actual value to be submitted -->
+                            <input type="hidden" name="status" value="lost">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-danger">Click to Report Document As Lost</button>
+                    </form>
+                </div>
+                <div class="card-footer mt-3 mb-5">
+                    <p>Follow these steps so as to receive a message incase your document is found:</p>
+                    <div class="card-text">
+                        <ul>
+                            <li>Dial *456*9*5# from the number you wish to whitelist</li>
+                            <li>Select option 5: Activate ALL Promotional Messages</li>
+                            <li>You will receive the following message &quot;You have successfully activated ALL Promotional messages &quot;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'components/footer.html' %}
+{% endif %}

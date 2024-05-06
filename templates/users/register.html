@@ -1,0 +1,209 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+
+<section class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+    <!-- Breadcrumb start -->
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/login">Login</a></li>
+            <li class="breadcrumb-item"><a href="/register">Register</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Registration</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Breadcrumb end -->
+      <div class="card mb-5">
+        <div class="card-body">
+          <form action="/register" method="POST">
+            <fieldset>
+              <div class="card-header text-center">SIGN UP FORM</div>
+              {% if message %}
+            <div class="alert alert-danger pz-2 mt-2" role="alert">
+              {{ message }}
+            </div> 
+            {% endif %}
+
+              <!-- row 1 -->
+              <div class="row g-3 mb-3">
+                <!-- first name -->
+                <div class="form-floating col">
+                  <input type="text" class="form-control" id="floatingInputFirstName" placeholder="First name" aria-label="First name" name="first_name" required>
+                  <label for="floatingInputFirstName">First Name</label>
+                </div>
+                <!-- last name -->
+                <div class="form-floating col">
+                  <input type="text" class="form-control" id="floatingInputLastName" placeholder="Last name" aria-label="Last name" name="last_name" required>
+                  <label for="floatingInputLastName">Last Name</label>
+                </div>
+              </div>
+              <!-- row 2 -->
+              <div class="row g-3 mb-3">
+                <!-- ID number -->
+                <div class="form-floating col">
+                  <input type="number" class="form-control" id="floatingInputIDNumber" placeholder="ID Number" aria-label="ID Number" name="id_number" required>
+                  <label for="floatingInputIDNumber">ID Number</label>
+                </div>
+                <!-- Mobile No -->
+                <div class="form-floating col">
+                  <input type="number" class="form-control" id="floatingInputMobileNo" placeholder="Mobile no" aria-label="Mobile No" name="mobile_no" required>
+                  <label for="floatingInputMobileNo">Mobile No</label>
+                </div>
+              </div>
+              <!-- email address -->
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com" name="email_address">
+                <label for="floatingInputEmail" required>Email address</label>
+              </div>
+              <!-- Hidden user group role -->
+              <div class="mb-3">
+                <label class="form-label" hidden>User Status</label>
+                <!-- Hidden input to hold the actual value to be submitted -->
+                <input type="hidden" name="user_role" value="user">
+              </div>
+                <!-- Password 1 -->
+                <div class="mb-3">
+                  <label for="password" class="visually-hidden">Password:</label>
+                  <div class="input-group">
+                    <div class="input-group-text" style="width: 170px; max-width: 170px;">Password :</div>
+                    <input type="password" class="form-control" name="password" placeholder="Password" id="myPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  autocomplete="off" required>
+                  </div>
+                  <input class="mt-3 ms-2 visually-hidden" type="checkbox" name="show_pass" onclick="myFunction()">
+                </div>
+                <!-- Password 2 -->
+                <div class="mb-3">
+                  <label for="password_confirm" class="visually-hidden">Repeat Password:</label>
+                  <div class="input-group">
+                    <div class="input-group-text" style="width: 170px; max-width: 170px;">Repeat Password :</div>
+                    <input type="password" class="form-control"  name="password_confirm" id="myPassword2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  autocomplete="off" placeholder="Repeat Password" name="password" placeholder="Password"  autocomplete="off" required>
+                  </div>
+                  <input class="mt-3 ms-2" type="checkbox" name="show_pass" onclick="myFunction()"> Show Password
+                </div>
+
+              <!-- agreement -->
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                  <label class="form-check-label" for="agreeTerms">
+                    Agree with <a href="/terms_and_conditions" target="_blank">Terms and Conditions</a>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="agreePrivacy" required>
+                  <label class="form-check-label" for="agreePrivacy">
+                    Agree with <a href="/privacy_policy" target="_blank">Privacy Policy</a>
+                  </label>
+                </div>
+              </div>
+              <!-- register and login button -->
+              <div class="mb-3">
+                <input type="submit" class="btn btn-success " title="click to register" value="Register">
+              </div>
+
+              <div class="card-footer">
+                <div class="card-text mb-3" id="message">
+                    <p>Password must contain the following:</p>
+                        <div style="text-indent: 30px; line-height: 0cm;">
+                            <p id="letter" class="invalid">Lowercase letter</p>
+                            <p id="capital" class="invalid">Capital (uppercase) letter</p>
+                            <p id="number" class="invalid">Number</p>
+                            <p id="length" class="invalid">Minimum of 8 characters</p>
+                        </div>
+                </div>
+            </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script>
+    //PASSWORD VERIFICATION ============================================================================================
+    var myInput1 = document.getElementById("myPassword"); // Change variable name to myInput1
+    var myInput2 = document.getElementById("myPassword2"); // Variable for the second password field
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput1.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    }
+    myInput2.onfocus = function() { // Adjusted for the second password field
+      document.getElementById("message").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput1.onblur = function() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    myInput2.onblur = function() { // Adjusted for the second password field
+      document.getElementById("message").style.display = "block";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput1.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput1.value.match(lowerCaseLetters)) { // Change myInput to myInput1
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+    }
+
+    myInput2.onkeyup = function() { // Adjusted for the second password field
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput2.value.match(lowerCaseLetters)) { // Change myInput to myInput2
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+      
+      // Validate capital letters, numbers, and length (similar logic as for myInput1)
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput2.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput2.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if(myInput2.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+
+</script>
+
+{% include 'components/footer.html' %}

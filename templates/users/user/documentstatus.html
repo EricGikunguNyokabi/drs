@@ -1,0 +1,131 @@
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/user_navbar.html' %}
+
+{% if session %}
+<div class="container py-2 mb-2">
+    <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/user_profile">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Check Document Status</li>
+            </ol>
+          </nav>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card mb-4 mb-lg-0">
+                <div class="card-header">
+                    <h4>Recovered Documents</h4>
+                </div>
+                <form action="/check_document_status" method="POST">
+                    {% if message %}
+                        <div class="alert alert-success pz-2 mt-2" role="alert">
+                            {{ message }}
+                        </div>
+                {% endif %}
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Document ID</th>
+                                    <th>Document Type</th>
+                                    <th>Current County</th>
+                                    <th>Current Constituency</th>
+                                    <th>Select County Near you</th>
+                                    <th>Constituency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for document in lost_and_found_data %}
+                                <tr>
+                                    <td>{{ document[0] }} {{ document[1] }} {{ document[2] }}</td>
+                                    <td>{{ document[3] }}</td>
+                                    <td>{{ document[4] }}</td>
+                                    <td>{{ document[5] }}</td>
+                                    <td>{{ document[6] }}</td>
+                                    <td>
+                                        <!-- county selection  -->
+                                        <div class="">
+                                            <!-- <label for="new_county" class="form-label">County</label> -->
+                                            <select class="form-control" id="new_county" name="county" onchange="updateConstituencies()">
+                                                <option value="">Select County</option>
+                                                {% for county in counties %}
+                                                    <option value="{{ county }}">{{ county }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </td> 
+                                    <td>
+                                        <div class="">
+                                            <select class="form-control" id="new_collection_constituency" name="constituency" >
+                                                <option value="">Select Constituency</option>
+                                                <!-- Constituencies will be populated dynamically using JavaScript -->
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="document_id" value="{{ document[3] }}">
+                                        <button type="submit" class="btn btn-primary">Request Transfer</button>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr><td colspan="6" class="text-center">No Document details lost and found from our database</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            </div>
+    
+
+        <div class="card mt-5 mb-4 mb-lg-0">
+            <div class="card-header">
+                <h4>Reported Document Status</h4>
+            </div>
+            <form action="/check_document_status" method="POST"></form>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Document ID</th>
+                                <th>Document Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for document in reported_lost %}
+                            <!-- Print the value of document[7] for debugging -->
+                            <tr {% if document[7] == "found" %} class="table-success" {% else %} class="table-danger" {% endif %}>
+                                <td>{{ document[4] }}</td>
+                                <td>{{ document[6] }}</td>
+                                <td>{{ document[5] }}</td>
+                                <td>{{ document[7] | capitalize }}</td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="6" class="text-center">No Reported Document details from our database</td></tr>
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+{% include 'components/footer.html' %}
+{% endif %}

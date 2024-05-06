@@ -1,0 +1,48 @@
+<!-- co_centerredirect.html -->
+
+{% include 'components/header.html' %}
+{% include 'components/navbar.html' %}
+{% include 'components/c_o_navbar.html' %}
+
+{% if session %}
+<div class="container mt-4">
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">Send to Other Collection Center</div>
+                <div class="card-body">
+                    <form action="/center_redirect" method="POST">
+                        <div class="mb-3">
+                            <label for="document_id" class="form-label">Document ID</label>
+                            <input type="text" class="form-control" id="document_id" name="document_id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new_county" class="form-label">New County</label>
+                            <select class="form-select" id="new_county" name="new_county" required onchange="updateConstituencies()">
+                                {% for county in counties %}
+                                    <option value="{{ county }}">{{ county }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new_collection_constituency" class="form-label">New constituency</label>
+                            <select class="form-select" id="new_collection_constituency" name="new_collection_constituency" required>
+                                <!-- Constituencies will be populated dynamically using JavaScript -->
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="card-footer mb-3">
+                    <a href="#" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3"></div>
+    </div>
+</div>
+{% endif %}
+
+{% include 'components/footer.html' %}
