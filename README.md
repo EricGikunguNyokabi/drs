@@ -2,13 +2,32 @@ Task 1: Cloning and Forking
 git --version
 
 1. Cloning a Repository:
-
   - Choose a public GitHub repository of interest (e.g., a project related to your field of study).
       https://github.com/EricGikunguNyokabi/drs
   - Clone the repository to your local machine.
       cd Desktop
       cd drsgit
+      git init
+      git add .
+      eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git clone https://github.com/EricGikunguNyokabi/drs.git
+          Cloning into 'drs'...
+          remote: Enumerating objects: 87, done.
+          remote: Counting objects: 100% (87/87), done.
+          remote: Compressing objects: 100% (87/87), done.
+          remote: Total 87 (delta 32), reused 0 (delta 0), pack-reused 0
+          Receiving objects: 100% (87/87), 1.26 MiB | 1.94 MiB/s, done.
+          Resolving deltas: 100% (32/32), done.
+
   - Explore the repository's structure, files, and history.
+  -       eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ ls
+          admin_app.py  drs          drs.sql               __pycache__       templates
+          app.py        drs_main.py  egnpythonanywhere.py  requirements.txt
+          Blueprint     DRS.odp      env                   sms.py
+          co_app.py     DRS.pptx     mpesa.py              static
+          eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ ls app.py
+          app.py
+          eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ cat app.py
+          
 
 
 
