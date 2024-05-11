@@ -27,6 +27,13 @@ git --version
           eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ ls app.py
           app.py
           eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ cat app.py
+
+      eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git log
+      fatal: your current branch 'main' does not have any commits yet
+      eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git branch
+      eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git remote -v
+      eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ 
+
           
 
 
@@ -46,6 +53,33 @@ Task 2: Managing Branches
   - In your local repository, create a new branch (e.g., `feature-update`).
 
   - Switch to the newly created branch.
+              eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git merge upstream/main --allow-unrelated-histories
+            Auto-merging app.py
+            CONFLICT (add/add): Merge conflict in app.py
+            Auto-merging drs_main.py
+            CONFLICT (add/add): Merge conflict in drs_main.py
+            CONFLICT (add/add): Merge conflict in static/css/bootstrap.css
+            CONFLICT (add/add): Merge conflict in static/css/docretrieval.css
+            CONFLICT (add/add): Merge conflict in static/css/edit-css.css
+            CONFLICT (add/add): Merge conflict in static/css/mycss.css
+            CONFLICT (add/add): Merge conflict in static/js/bootstrap.js
+            Auto-merging templates/components/drsmain.html
+            CONFLICT (add/add): Merge conflict in templates/components/drsmain.html
+            Automatic merge failed; fix conflicts and then commit the result.
+            eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git branch feature-update
+            eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git checkout feature-update
+            app.py: needs merge
+            drs_main.py: needs merge
+            static/css/bootstrap.css: needs merge
+            static/css/docretrieval.css: needs merge
+            static/css/edit-css.css: needs merge
+            static/css/mycss.css: needs merge
+            static/js/bootstrap.js: needs merge
+            templates/components/drsmain.html: needs merge
+            error: you need to resolve your current index first
+            eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ git checkout -b feature-update
+            fatal: A branch named 'feature-update' already exists.
+            eric@eric-HP-2000-Notebook-PC:~/Desktop/drsgit$ 
 
 
 
